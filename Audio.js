@@ -1,32 +1,33 @@
 /**
  * Created by elinlager on 2016-09-13.
  */
-/** Add the audio file **/
-<audio id="myAudio" src="path-to-audio.mp3"></audio>
 
 
-/** Get the data from the AnalyserNode **/
-window.onload = function() {
-    var ctx = new AudioContext();
-    var audio = document.getElementById('myAudio');
-    var audioSrc = ctx.createMediaElementSource(audio);
-    var analyser = ctx.createAnalyser();
-    // we have to connect the MediaElementSource with the analyser
-    audioSrc.connect(analyser);
-    // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
+var myHeading = document.querySelector('h1');
+myHeading.textContent = 'Hello world!';
 
-    // frequencyBinCount tells you how many values you'll receive from the analyser
-    var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
-    // we're ready to receive some data!
-    // loop
-    function renderFrame() {
-        requestAnimationFrame(renderFrame);
-        // update data in frequencyData
-        analyser.getByteFrequencyData(frequencyData);
-        // render frame based on values in frequencyData
-        // console.log(frequencyData)
-    }
-    audio.start();
-    renderFrame();
-};
+var audioCtx = new AudioContext();
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+/** Add the audio file**/
+var audio = new Audio();
+audio.src = 'Herbert Munkhammar - Malmö State of Mind.mp3';
+audio.controls = true;
+audio.autoplay = true;
+document.body.appendChild(audio);
+
+var context = new webkitAudioContext();
+var analyser = context.createAnalyser();
+
+
+window.addEventListener('load', function(e) {
+    // Our <audio> element will be the audio source.
+    var source = context.createMediaElementSource(audio);
+    source.connect(analyser);
+    analyser.connect(context.destination);
+}, false);
+
+
+
+

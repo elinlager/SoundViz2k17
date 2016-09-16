@@ -2,65 +2,79 @@
  * Created by elinlager on 2016-09-13.
  */
 
-
-var myHeading = document.querySelector('h1');
-myHeading.textContent = 'Hello world!';
-
 //size of canvas
 var WIDTH = 640;
 var HEIGHT = 100;
 var FFT_SIZE = 256;
 
+
+
 // set up canvas context for visualizer
 var canvas = document.querySelector('.visualizer');
 var canvasCtx = canvas.getContext("2d");
 
+
 /** Add the audio file **/
+var song = 'Herbert Munkhammar - Malmö State of Mind.mp3';
 var audio = new Audio();
-audio.src = 'Herbert Munkhammar - Malmö State of Mind.mp3';
 audio.controls = true;
 audio.autoplay = true;
-document.querySelector('h2').appendChild(audio);
+audio.src = song;
 
 var context = new (window.AudioContext || window.webkitAudioContext)();
 var analyser = context.createAnalyser();
 
-window.addEventListener('load', function(e) {
-    // Our <audio> element will be the audio source.
-    var source = context.createMediaElementSource(audio);
-    source.connect(analyser);
-    analyser.connect(context.destination);
-}, false);
+function play() {
+        audio.source = song;
 
-analyser.fftSize = FFT_SIZE;
-var bufferLength = analyser.frequencyBinCount;
-console.log(bufferLength);
-var dataArray = new Uint8Array(bufferLength);
-canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+        document.querySelector('h2').appendChild(audio);
 
-function draw() {
-    drawVisual = requestAnimationFrame(draw);
+    window.addEventListener('load', function(e) {
+        // Our <audio> element will be the audio source.
+        var source = context.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(context.destination);
+    }, false);
 
-    analyser.getByteFrequencyData(dataArray);
+    analyser.fftSize = FFT_SIZE;
+    var bufferLength = analyser.frequencyBinCount;
+    console.log(bufferLength);
+    var dataArray = new Uint8Array(bufferLength);
+    canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
 
-    canvasCtx.fillStyle = 'rgb(0, 0, 0)';
-    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+    function draw() {
+        drawVisual = requestAnimationFrame(draw);
 
-    var barWidth = (WIDTH / bufferLength) * 0.8;
-    var barHeight;
-    var x = 0;
+        analyser.getByteFrequencyData(dataArray);
 
-    for(var i = 0; i < bufferLength; i++) {
-        barHeight = dataArray[i]/2;
+        canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+        canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
-        var hue = i/this.analyser.frequencyBinCount * 360;
-        canvasCtx.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
-        //canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)'; <-- Röda nyanser
-        canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight);
+        var barWidth = (WIDTH / bufferLength) * 0.8;
+        var barHeight;
+        var x = 0;
+
+        for(var i = 0; i < bufferLength; i++) {
+            barHeight = dataArray[i]/2;
+
+            var hue = i/this.analyser.frequencyBinCount * 360;
+            canvasCtx.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
+            //canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)'; <-- Röda nyanser
+            canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight);
 
 
-        x += barWidth + 1;
-    }
-};
+            x += barWidth + 1;
+        }
+    };
 
-draw();
+    draw();
+}
+
+play();
+
+function chooseSong(text) {
+    song = text;
+    audio.src = song;
+    play();
+
+}

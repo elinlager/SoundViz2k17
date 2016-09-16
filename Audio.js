@@ -11,7 +11,6 @@ var WIDTH = 640;
 var HEIGHT = 100;
 var FFT_SIZE = 256;
 
-
 // set up canvas context for visualizer
 var canvas = document.querySelector('.visualizer');
 var canvasCtx = canvas.getContext("2d");
@@ -31,7 +30,6 @@ window.addEventListener('load', function(e) {
     var source = context.createMediaElementSource(audio);
     source.connect(analyser);
     analyser.connect(context.destination);
-
 }, false);
 
 analyser.fftSize = FFT_SIZE;
@@ -48,19 +46,21 @@ function draw() {
     canvasCtx.fillStyle = 'rgb(0, 0, 0)';
     canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
-    var barWidth = (WIDTH / bufferLength) * 2.5;
+    var barWidth = (WIDTH / bufferLength) * 0.8;
     var barHeight;
     var x = 0;
 
     for(var i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i]/2;
 
-        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)';
+        var hue = i/this.analyser.frequencyBinCount * 360;
+        canvasCtx.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
+        //canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)'; <-- Röda nyanser
         canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight);
+
 
         x += barWidth + 1;
     }
 };
-
 
 draw();

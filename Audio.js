@@ -44,15 +44,17 @@ var context = new (window.AudioContext || window.webkitAudioContext)();
 var analyser = context.createAnalyser();
 
 //add plane
-var planegeo= new THREE.PlaneGeometry(30, 30, 127, 127);
+var planegeo= new THREE.PlaneGeometry(10, 10, 127, 127);
 
 
-var planemat = new THREE.MeshPhongMaterial({
+var planemat = new THREE.MeshBasicMaterial({
     color: 0xFFFF00,
     wireframe: true
 });
 
 var plane = new THREE.Mesh(planegeo, planemat);
+plane.rotation.z = -1;
+plane.rotation.x = -1;
 scene.add(plane);
 
 function play() {

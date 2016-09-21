@@ -61,7 +61,7 @@ var plane = new THREE.Mesh(planegeo, planemat);
 plane.rotation.x = -1;
 scene.add(plane);
 
-plane.geometry.vertices[500].z += 5; //test
+//plane.geometry.vertices[500].z += 5; //test
 
 /********************
     ORBIT CONTROLS
@@ -134,6 +134,15 @@ function play() {
         cube.scale.z = dataArray[15]/50;
         cube.rotation.y += 0.01;
         cube.rotation.x += 0.01;
+
+
+        //add analysed data to first row of planegeometry
+        for(var i = 0; i < 127; i++){
+            plane.geometry.vertices[i].z += dataArray[i]/50;
+        }
+
+
+
 
         renderer.render( scene, camera );
     }

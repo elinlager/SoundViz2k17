@@ -49,7 +49,7 @@ var analyser = context.createAnalyser();
      ADD PLANE
  ********************/
 var planegeo= new THREE.PlaneGeometry(30, 30, 30, 127);
-
+planegeo.verticesNeedUpdate = true;
 
 var planemat = new THREE.MeshBasicMaterial({
     color: 0xFFFF00,
@@ -60,6 +60,7 @@ var plane = new THREE.Mesh(planegeo, planemat);
 //plane.rotation.z = -1;
 plane.rotation.x = -1;
 scene.add(plane);
+
 
 //plane.geometry.vertices[500].z += 5; //test
 
@@ -137,11 +138,11 @@ function play() {
 
 
         //add analysed data to first row of planegeometry
-        for(var i = 0; i < 127; i++){
-            plane.geometry.vertices[i].z += dataArray[i]/50;
+        for(var i = 0; i < 128; i++){
+            plane.geometry.vertices[i].z =  dataArray[i]/10;
         }
 
-
+        plane.geometry.verticesNeedUpdate = true;
 
 
         renderer.render( scene, camera );

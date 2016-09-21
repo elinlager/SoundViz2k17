@@ -14,6 +14,24 @@ var canvas = document.querySelector('.visualizer');
 var canvasCtx = canvas.getContext("2d");
 
 
+// setup 3d scene
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+
+//create cube
+
+var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
+
+camera.position.z = 5;
+
+
 /** Add the audio file **/
 var song = 'Herbert Munkhammar - Malmö State of Mind.mp3';
 var audio = new Audio();
@@ -25,9 +43,9 @@ var context = new (window.AudioContext || window.webkitAudioContext)();
 var analyser = context.createAnalyser();
 
 function play() {
-        audio.source = song;
+    audio.source = song;
 
-        document.querySelector('h2').appendChild(audio);
+    document.querySelector('h2').appendChild(audio);
 
     window.addEventListener('load', function(e) {
         // Our <audio> element will be the audio source.
@@ -68,6 +86,23 @@ function play() {
     };
 
     draw();
+
+    //render cube
+    function render() {
+        requestAnimationFrame( render );
+
+        analyser.getByteFrequencyData(dataArray);
+
+        cube.scale.x = dataArray[15]/50;
+        cube.scale.y = dataArray[15]/50;
+        cube.scale.z = dataArray[15]/50;
+        cube.rotation.y += 0.01;
+        cube.rotation.x += 0.01;
+
+        renderer.render( scene, camera );
+    }
+    render();
+
 }
 
 play();
@@ -78,3 +113,7 @@ function chooseSong(text) {
     play();
 
 }
+
+
+
+

@@ -48,7 +48,7 @@ var analyser = context.createAnalyser();
 /********************
      ADD PLANE
  ********************/
-var planegeo= new THREE.PlaneGeometry(30, 30, 127, 127);
+var planegeo= new THREE.PlaneGeometry(30, 30, 30, 127);
 
 
 var planemat = new THREE.MeshBasicMaterial({
@@ -57,10 +57,11 @@ var planemat = new THREE.MeshBasicMaterial({
 });
 
 var plane = new THREE.Mesh(planegeo, planemat);
-plane.rotation.z = -1;
+//plane.rotation.z = -1;
 plane.rotation.x = -1;
 scene.add(plane);
 
+plane.geometry.vertices[500].z += 5; //test
 
 /********************
     ORBIT CONTROLS

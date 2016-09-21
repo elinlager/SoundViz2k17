@@ -32,6 +32,7 @@ scene.add( cube );
 camera.position.z = 5;
 
 
+
 /** Add the audio file **/
 var song = 'Herbert Munkhammar - Malmö State of Mind.mp3';
 var audio = new Audio();
@@ -41,6 +42,18 @@ audio.src = song;
 
 var context = new (window.AudioContext || window.webkitAudioContext)();
 var analyser = context.createAnalyser();
+
+//add plane
+var planegeo= new THREE.PlaneGeometry(30, 30, 127, 127);
+
+
+var planemat = new THREE.MeshPhongMaterial({
+    color: 0xFFFF00,
+    wireframe: true
+});
+
+var plane = new THREE.Mesh(planegeo, planemat);
+scene.add(plane);
 
 function play() {
     audio.source = song;

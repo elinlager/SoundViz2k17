@@ -52,9 +52,12 @@ var analyser = context.createAnalyser();
 
 var planegeo= new THREE.PlaneGeometry(30, 30, 127, 29);
 
+<<<<<<< HEAD
 planegeo.verticesNeedUpdate = true;
 
 
+=======
+>>>>>>> origin/master
 
 var planemat = new THREE.MeshBasicMaterial({
     color: 0xFFFF00,
@@ -142,10 +145,10 @@ function play() {
 
 
         //add analysed data to first row of planegeometry
+
         for(var k=0; k <128; k++) {
             plane.geometry.vertices[k].z =  dataArray[k]/50;
 
-        }
 
         for(var j = 30; j >1; j--) {
             for(var i = 0; i < 128; i++){

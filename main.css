@@ -1,0 +1,20 @@
+#playlist {
+    background-color: black;
+    width: 30%
+}
+
+.songButton {
+
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+li {
+    margin: 5px;
+
+}

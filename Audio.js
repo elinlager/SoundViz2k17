@@ -48,7 +48,11 @@ var analyser = context.createAnalyser();
 /********************
      ADD PLANE
  ********************/
+<<<<<<< Updated upstream
 var planegeo= new THREE.PlaneGeometry(30, 30, 30, 127);
+=======
+var planegeo= new THREE.PlaneGeometry(30, 30, 127, 30);
+>>>>>>> Stashed changes
 
 
 var planemat = new THREE.MeshBasicMaterial({
@@ -71,10 +75,6 @@ var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.9;
 controls.enableZoom = true;
-
-//Zoomar man ut mer än 82 så missar ljuset globen
-controls.minDistance = 30;
-controls.maxDistance = 60;
 
 
 
@@ -123,7 +123,9 @@ function play() {
 
     draw();
 
-    //render cube
+    /********************
+         RENDER
+     ********************/
     function render() {
         requestAnimationFrame( render );
 
@@ -136,6 +138,7 @@ function play() {
         cube.rotation.x += 0.01;
 
 
+<<<<<<< Updated upstream
         //add analysed data to first row of planegeometry
         for(var i = 0; i < 127; i++){
             plane.geometry.vertices[i].z += dataArray[i]/50;
@@ -144,9 +147,13 @@ function play() {
 
 
 
+=======
+>>>>>>> Stashed changes
         renderer.render( scene, camera );
     }
     render();
+
+
 
 }
 
@@ -158,7 +165,3 @@ function chooseSong(text) {
     play();
 
 }
-
-
-
-

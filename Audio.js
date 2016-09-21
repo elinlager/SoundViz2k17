@@ -33,7 +33,9 @@ camera.position.z = 5;
 
 
 
-/** Add the audio file **/
+/********************
+    ADD AUDIO FILE
+ ********************/
 var song = 'Herbert Munkhammar - Malmö State of Mind.mp3';
 var audio = new Audio();
 audio.controls = true;
@@ -43,8 +45,10 @@ audio.src = song;
 var context = new (window.AudioContext || window.webkitAudioContext)();
 var analyser = context.createAnalyser();
 
-//add plane
-var planegeo= new THREE.PlaneGeometry(15, 15, 127, 127);
+/********************
+     ADD PLANE
+ ********************/
+var planegeo= new THREE.PlaneGeometry(30, 30, 127, 127);
 
 
 var planemat = new THREE.MeshBasicMaterial({
@@ -53,7 +57,23 @@ var planemat = new THREE.MeshBasicMaterial({
 });
 
 var plane = new THREE.Mesh(planegeo, planemat);
+plane.rotation.z = -1;
+plane.rotation.x = -1;
 scene.add(plane);
+
+
+/********************
+    ORBIT CONTROLS
+ ********************/
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+controls.enableDamping = true;
+controls.dampingFactor = 0.9;
+controls.enableZoom = true;
+
+//Zoomar man ut mer än 82 så missar ljuset globen
+controls.minDistance = 30;
+controls.maxDistance = 60;
 
 
 

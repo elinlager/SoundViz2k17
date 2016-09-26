@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>SoundViz2k16</title>
@@ -7,6 +8,8 @@
     <script src="js/three.js"></script>
     <script src = "OrbitControls.js"></script>
 </head>
+
+
 <body>
 <div id="container">
     <div id="info">
@@ -17,8 +20,33 @@
         <li><button id="Song1" class="songButton" onclick="chooseSong('Herbert Munkhammar - Malmö State of Mind.mp3')">Herbert Munkhammar - Malmö State of Mind</button></li>
         <li><button id="Song2" class="songButton" onclick="chooseSong('OK Go - I Wont Let You Down.mp3')">OK Go - I Wont Let You Down</button></li>
     </ul>
-
     <h2></h2>
+
+        <!-- Josse lagt till: BUTTONS FOR GRAPH CONTROLS -->
+        <!-- skrev ba nåt -->
+        <div id="defaultText" class="buttonText">
+            <p class="buttonText">Press one of the buttons below to view the graph<br>from different angles depending on the <br>time- or frequencyaxis.<br> </p>
+        </div>
+
+        <!-- Time -->
+        <div id="buttonTime" class="buttonClass" onclick="show_timeText()">
+            <button id ="time" class="button" onclick="graphControls(0,(-3.14/2),2)">Time</button>
+        </div>
+
+        <div id="timeText"  style="display:none">
+            <p class="buttonText">Currently displaying: Time</p>
+        </div>
+
+        <!-- Frequency -->
+        <div id="buttonFreq" class="buttonClass" onclick="show_freqText()">
+            <button id="freq" class="button" onclick="graphControls(0,0,2)">Frequency</button>
+        </div>
+
+        <div id="freqText" style="display:none">
+            <p class="buttonText">Currently displaying: Frequency</p>
+        </div>
+        <!-- Josse slut -->
+
     </div>
 </div>
 

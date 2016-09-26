@@ -40,13 +40,19 @@ var planegeo= new THREE.PlaneGeometry(30, 30, 127, 29);
 planegeo.verticesNeedUpdate = true;
 var planemat = new THREE.MeshBasicMaterial({
     color: 0xFFFF00,
-    wireframe: true
-});
+   wireframe: true
+ });
+
 var plane = new THREE.Mesh(planegeo, planemat);
-//plane.rotation.z = -1;
-plane.rotation.x = -1;
-plane.rotation.z = -1;
+
+plane.rotation.x=-1;
+plane.rotation.z=0;
+plane.rotation.x=(-3.14/4);
+plane.position.y=3;
+plane.position.x=2;
+
 scene.add(plane);
+
 
 /********************
     ORBIT CONTROLS
@@ -56,6 +62,15 @@ var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.9;
 controls.enableZoom = true;
+
+/* Josse lagt till */
+controls.enableRotate = false;
+
+//max och mindistance för zoomning
+controls.minDistance = 15;
+controls.maxDistance = 25;
+
+/* Josse slut */
 
 function play() {
     //add the audio element
@@ -91,6 +106,7 @@ function play() {
             plane.geometry.vertices[k].z =  dataArray[k]/50;
         }
 
+
         //"moving" the vertex positions of each row back one step
         for(var j = 30; j >1; j--) {
             for(var i = 0; i < 128; i++){
@@ -113,3 +129,46 @@ function chooseSong(text) {
     play();
 
 }
+
+/* Josse lagt till */
+
+/* when pressing controlbuttons */
+function graphControls(posz,rotz,rotx) {
+
+    plane.position.z = posz;
+    plane.rotation.z=rotz;
+    plane.rotation.x=rotx;
+    plane.position.x=2;
+
+    //fuckar ur när man har rotate enabled, ska fixas
+   // controls.enableRotate = true;
+
+}
+
+function show_timeText() {
+
+    //display and hide text
+    document.getElementById('timeText').style.display = "block";
+    document.getElementById('freqText').style.display = "none";
+
+    //appearance of active button
+    document.getElementById('time').style.fontWeight="bold";
+    document.getElementById('time').style.color="yellow";
+    document.getElementById('freq').style.fontWeight="normal";
+    document.getElementById('freq').style.color="white";
+}
+
+function show_freqText() {
+
+    //display and hide text
+    document.getElementById('freqText').style.display = "block";
+    document.getElementById('timeText').style.display = "none";
+
+    //appearance of active button
+    document.getElementById('freq').style.fontWeight="bold";
+    document.getElementById('freq').style.color="yellow";
+    document.getElementById('time').style.fontWeight="normal";
+    document.getElementById('time').style.color="white";
+}
+
+/* Josse slut */

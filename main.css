@@ -14,13 +14,23 @@
     background-color: black;
     color: white;
     font-size: 15px;
+
 }
+
+
+.songButton:hover{
+    color: yellow;
+}
+
 
 h1{
     color: white;
+    font-family:helvetica;
+    text-transform: uppercase;
 }
 
 p {
+    font-family:helvetica;
     color: white;
     font-size: 20px;
 
@@ -32,4 +42,50 @@ li {
 
 body {
     background-color: black;
+}
+
+
+/*Josse lagt till */
+/* graph buttons */
+
+.buttonClass {
+    position: absolute;
+    left: 30px;
+    width: 200px;
+    height: 10px;
+    opacity: 1;
+    z-index: 1;
+    /*margin-top: auto;*/
+}
+
+
+.button {
+    font-size:20px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    outline: 0;
+    font-family: "Consolas";
+}
+
+.button:hover{
+    font-weight:yell;
+}
+
+.buttonText{
+    top:250px;
+    font-family: Consolas;
+    font-size: 12px;
+}
+
+
+#buttonTime
+{
+   top: 330px;
+}
+
+
+#buttonFreq
+{
+    top: 370px;
 }

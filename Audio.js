@@ -2,13 +2,14 @@
  * Created by elinlager on 2016-09-13.
  */
 
-//size of canvas
-var WIDTH = 640;
-var HEIGHT = 100;
+/********************
+ GLOBAL CONSTANTS
+ ********************/
 var FFT_SIZE = 256;
 
-
-// setup 3d scene
+/********************
+ SETUP 3D SCENE
+ ********************/
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 camera.position.z = 5;
@@ -16,7 +17,6 @@ camera.position.z = 5;
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
-
 
 /********************
     ADD AUDIO FILE
@@ -27,32 +27,28 @@ audio.controls = true;
 audio.autoplay = true;
 audio.src = song;
 
+/********************
+ CREATE AUDIOCONTEXT
+ AND ANALYSER NODE
+ ********************/
 var context = new (window.AudioContext || window.webkitAudioContext)();
 var analyser = context.createAnalyser();
+analyser.fftSize = FFT_SIZE;
 
 /********************
      ADD PLANE
  ********************/
-
-
 var planegeo= new THREE.PlaneGeometry(30, 30, 127, 29);
-
 planegeo.verticesNeedUpdate = true;
-
-
 var planemat = new THREE.MeshBasicMaterial({
     color: 0xFFFF00,
     wireframe: true
 });
-
 var plane = new THREE.Mesh(planegeo, planemat);
 //plane.rotation.z = -1;
 plane.rotation.x = -1;
 plane.rotation.z = -1;
 scene.add(plane);
-
-
-//plane.geometry.vertices[500].z += 5; //test
 
 /********************
     ORBIT CONTROLS
@@ -62,8 +58,6 @@ var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.9;
 controls.enableZoom = true;
-
-
 
 function play() {
     audio.source = song;
@@ -77,12 +71,9 @@ function play() {
         analyser.connect(context.destination);
     }, false);
 
-    analyser.fftSize = FFT_SIZE;
     var bufferLength = analyser.frequencyBinCount;
     console.log(bufferLength);
     var dataArray = new Uint8Array(bufferLength);
-
-
 
     /********************
          RENDER
@@ -110,9 +101,6 @@ function play() {
         }
     }
     render();
-
-
-
 }
 
 play();

@@ -16,18 +16,14 @@ camera.position.z = 25;
 
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
-
 document.getElementById("container").appendChild(renderer.domElement);
 
-
 /********************
-    ADD AUDIO FILE
+    CREATE AUDIO ELEMENT
  ********************/
-var song = 'Herbert Munkhammar - Malmö State of Mind.mp3';
 var audio = new Audio();
 audio.controls = true;
 audio.autoplay = true;
-audio.src = song;
 
 /********************
  CREATE AUDIOCONTEXT
@@ -62,8 +58,7 @@ controls.dampingFactor = 0.9;
 controls.enableZoom = true;
 
 function play() {
-    audio.source = song;
-
+    //add the audio element
     document.querySelector('h2').appendChild(audio);
 
     window.addEventListener('load', function(e) {
@@ -73,6 +68,8 @@ function play() {
         analyser.connect(context.destination);
     }, false);
 
+    /*get number of frequency data (should be fft size / 2)
+    and create array with that size */
     var bufferLength = analyser.frequencyBinCount;
     console.log(bufferLength);
     var dataArray = new Uint8Array(bufferLength);
@@ -83,15 +80,18 @@ function play() {
     function render() {
         requestAnimationFrame( render );
 
+        /**************************************
+         * put analysed data in dataArray array
+         **************************************/
         analyser.getByteFrequencyData(dataArray);
 
-
         //add analysed data to first row of planegeometry
+        // planegeometry is an array with all the vertices in the plane, row by row
         for(var k=0; k <128; k++) {
             plane.geometry.vertices[k].z =  dataArray[k]/50;
-
         }
 
+        //"moving" the vertex positions of each row back one step
         for(var j = 30; j >1; j--) {
             for(var i = 0; i < 128; i++){
                 plane.geometry.vertices[(j*128)-i-1].z = plane.geometry.vertices[((j-1)*128)-i-1].z;

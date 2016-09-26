@@ -5,8 +5,9 @@
 }
 
 #playlist {
-    right: 5px;
-    color: yellow;
+    position: absolute;
+    padding-left: 900px;
+    top: 10px;
 }
 
 .songButton {

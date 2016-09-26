@@ -1,20 +1,19 @@
 #info {
     position: absolute;
     z-index: 1;
+    width: 100%;
 }
+
 #playlist {
-    /*background-color: black;*/
-    width: 30%;
     right: 5px;
+    color: yellow;
 }
 
 .songButton {
-
     border: none;
     background-color: black;
     color: white;
     font-size: 15px;
-
 }
 
 h1{

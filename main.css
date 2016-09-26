@@ -15,10 +15,21 @@
     background-color: black;
     color: white;
     font-size: 15px;
+    padding-left: 0px;
 }
+
+audio::-webkit-media-controls-panel {
+    background-color: black;
+}
+
+audio::-webkit-media-controls-volume-slider {
+    /*color: white;*/
+}
+
 
 h1{
     color: white;
+    margin-left: 30px;
 }
 
 p {

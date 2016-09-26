@@ -57,6 +57,10 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.9;
 controls.enableZoom = true;
 
+
+/********************
+        PLAY
+ ********************/
 function play() {
     //add the audio element
     document.querySelector('h2').appendChild(audio);

@@ -72,6 +72,10 @@ controls.maxDistance = 25;
 
 /* Josse slut */
 
+
+/********************
+        PLAY
+ ********************/
 function play() {
     //add the audio element
     document.querySelector('h2').appendChild(audio);

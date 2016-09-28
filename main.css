@@ -5,8 +5,9 @@
 }
 
 #playlist {
-    right: 5px;
-    color: yellow;
+    position: absolute;
+    padding-left: 900px;
+    top: 10px;
 }
 
 .songButton {
@@ -14,12 +15,21 @@
     background-color: black;
     color: white;
     font-size: 15px;
-
 }
 
 
 .songButton:hover{
     color: yellow;
+    padding-left: 0px;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: black;
+}
+
+audio::-webkit-media-controls-volume-slider {
+    /*color: white;*/
+>>>>>>> origin/master
 }
 
 
@@ -27,6 +37,7 @@ h1{
     color: white;
     font-family:helvetica;
     text-transform: uppercase;
+    margin-left: 30px;
 }
 
 p {

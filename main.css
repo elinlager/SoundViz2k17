@@ -6,7 +6,7 @@
 
 #playlist {
     position: absolute;
-    padding-left: 900px;
+    margin-left: 900px;
     top: 10px;
 }
 
@@ -24,7 +24,7 @@
 }
 
 audio::-webkit-media-controls-panel {
-    background-color: black;
+    background-color: transparent;
 }
 
 audio::-webkit-media-controls-volume-slider {
@@ -43,7 +43,10 @@ p {
     font-family:helvetica;
     color: white;
     font-size: 20px;
+}
 
+ul {
+    list-style-type: none;
 
 }
 
@@ -101,8 +104,11 @@ body {
 
 }
 
-
 #buttonFreq
 {
     top: 200px;
+}
+
+.songButton {
+    background-color: transparent;
 }

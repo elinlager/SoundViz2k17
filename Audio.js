@@ -37,12 +37,12 @@ analyser.fftSize = FFT_SIZE;
      ADD PLANE
  ********************/
 
-    var planegeo= new THREE.PlaneGeometry(30, 30, 127, 29);
-    planegeo.verticesNeedUpdate = true;
-    var planemat = new THREE.MeshBasicMaterial({
-        color: 0xFFFF00,
-        wireframe: true
-    });
+var planegeo= new THREE.PlaneGeometry(30, 30, 127, 29);
+planegeo.verticesNeedUpdate = true;
+var planemat = new THREE.MeshBasicMaterial({
+    color: 0xFFFF00,
+    wireframe: true
+});
 
     var plane = new THREE.Mesh(planegeo, planemat);
 
@@ -64,7 +64,8 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.9;
 controls.enableZoom = true;
 
-//ska vara true men fuckar upp efter att ha tryckt på knapparna
+
+/* Josse lagt till */
 controls.enableRotate = true;
 
 //max och mindistance för zoomning
@@ -131,6 +132,7 @@ play();
 function chooseSong(text) {
     song = text;
     audio.src = song;
+    document.getElementById("Song1").style.color = "yellow";
     play();
 }
 
@@ -151,6 +153,8 @@ function graphControls(posz,rotz,rotx,roty) {
     plane.position.x=2;
     plane.rotation.y=roty;
 }
+
+
 
 function show_timeText() {
 

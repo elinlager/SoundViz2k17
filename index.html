@@ -15,15 +15,16 @@
     <div id="info">
     <h1>SoundViz2k16</h1>
 
-
-    <ul id="playlist">
-        <li><h2></h2></li>
-        <li><p>Playlist: </p></li>
-        <li><button id="Song1" class="songButton" onclick="chooseSong('Herbert Munkhammar - Malmö State of Mind.mp3')">Herbert Munkhammar - Malmö State of Mind</button></li>
-        <li><button id="Song2" class="songButton" onclick="chooseSong('OK Go - I Wont Let You Down.mp3')">OK Go - I Wont Let You Down</button></li>
-    </ul>
-    <h2></h2>
-
+    <div id="lista">
+        <ul id="playlist">
+            <li><h2></h2></li>
+            <li><p>Playlist: </p></li>
+            <li><button id="Song1" class="songButton" onclick="chooseSong('Herbert Munkhammar - Malmö State of Mind.mp3')">Herbert Munkhammar - Malmö State of Mind</button></li>
+            <li><button id="Song2" class="songButton" onclick="chooseSong('OK Go - I Wont Let You Down.mp3')">OK Go - I Wont Let You Down</button></li>
+            <li><button id="Song3" class="songButton" onclick="chooseSong('Per.mp3')">Simon Hedlund - Per</button></li>
+            <li><button id="Song4" class="songButton" onclick="chooseSong('Slagsmalsklubben.mp3')">Slagsmålsklubben - Övningsköra</button></li>
+        </ul>
+    </div>
         <!-- BUTTONS FOR GRAPH CONTROLS -->
 
         <div id="defaultText" class="buttonText">
@@ -32,7 +33,9 @@
 
         <!-- Time -->
         <div id="buttonTime" class="buttonClass" onclick="show_timeText()">
+
             <button id ="time" class="button" onclick="graphControls(0,(+3.14/2),5.5,0)">Time</button>
+
         </div>
 
         <div id="timeText"  style="display:none">

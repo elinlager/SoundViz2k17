@@ -29,7 +29,6 @@ audio::-webkit-media-controls-panel {
 
 audio::-webkit-media-controls-volume-slider {
     /*color: white;*/
->>>>>>> origin/master
 }
 
 
@@ -44,6 +43,7 @@ p {
     font-family:helvetica;
     color: white;
     font-size: 20px;
+
 
 }
 
@@ -87,16 +87,22 @@ body {
     top:250px;
     font-family: Consolas;
     font-size: 12px;
+    margin-left: 20px;
+}
+
+#freqText, #timeText{
+    margin-left: 20px;
 }
 
 
 #buttonTime
 {
-   top: 330px;
+   top: 170px;
+
 }
 
 
 #buttonFreq
 {
-    top: 370px;
+    top: 200px;
 }

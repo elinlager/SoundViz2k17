@@ -46,7 +46,6 @@ var planemat = new THREE.MeshBasicMaterial({
 var plane = new THREE.Mesh(planegeo, planemat);
 
 plane.rotation.x=-1;
-plane.rotation.z=0;
 plane.rotation.x=(-3.14/4);
 plane.position.y=3;
 plane.position.x=2;
@@ -63,14 +62,12 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.9;
 controls.enableZoom = true;
 
-/* Josse lagt till */
+//ska vara true men fuckar upp efter att ha tryckt på knapparna
 controls.enableRotate = false;
 
 //max och mindistance för zoomning
-controls.minDistance = 15;
-controls.maxDistance = 25;
-
-/* Josse slut */
+controls.minDistance = 20;
+controls.maxDistance = 30;
 
 
 /********************
@@ -121,6 +118,7 @@ function play() {
 
             renderer.render( scene, camera );
         }
+
     }
     render();
 }
@@ -134,18 +132,22 @@ function chooseSong(text) {
 
 }
 
-/* Josse lagt till */
 
 /* when pressing controlbuttons */
-function graphControls(posz,rotz,rotx) {
+function graphControls(posz,rotz,rotx,roty) {
+
+    plane.rotation.x=-1;
+    plane.rotation.x=(-3.14/4);
+    plane.position.y=3;
+    plane.position.x=2;
+
 
     plane.position.z = posz;
     plane.rotation.z=rotz;
     plane.rotation.x=rotx;
     plane.position.x=2;
+    plane.rotation.y=roty;
 
-    //fuckar ur när man har rotate enabled, ska fixas
-   // controls.enableRotate = true;
 
 }
 
@@ -175,4 +177,3 @@ function show_freqText() {
     document.getElementById('time').style.color="white";
 }
 
-/* Josse slut */

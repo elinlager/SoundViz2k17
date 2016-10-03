@@ -24,15 +24,15 @@
     </ul>
     <h2></h2>
 
-        <!-- Josse lagt till: BUTTONS FOR GRAPH CONTROLS -->
-        <!-- skrev ba nåt -->
+        <!-- BUTTONS FOR GRAPH CONTROLS -->
+
         <div id="defaultText" class="buttonText">
             <p class="buttonText">Press one of the buttons below to view the graph<br>from different angles depending on the <br>time- or frequencyaxis.<br> </p>
         </div>
 
         <!-- Time -->
         <div id="buttonTime" class="buttonClass" onclick="show_timeText()">
-            <button id ="time" class="button" onclick="graphControls(0,(-3.14/2),2)">Time</button>
+            <button id ="time" class="button" onclick="graphControls(0,(+3.14/2),5.5,0)">Time</button>
         </div>
 
         <div id="timeText"  style="display:none">
@@ -41,13 +41,12 @@
 
         <!-- Frequency -->
         <div id="buttonFreq" class="buttonClass" onclick="show_freqText()">
-            <button id="freq" class="button" onclick="graphControls(0,0,2)">Frequency</button>
+            <button id="freq" class="button" onclick="graphControls(0,0,2,3.14)">Frequency</button>
         </div>
 
         <div id="freqText" style="display:none">
             <p class="buttonText">Currently displaying: Frequency</p>
         </div>
-        <!-- Josse slut -->
 
     </div>
 </div>

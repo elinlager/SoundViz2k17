@@ -8,6 +8,8 @@
     position: absolute;
     margin-left: 900px;
     top: 10px;
+    list-style-type: none;
+
 }
 
 .songButton {
@@ -15,8 +17,6 @@
     color: white;
     font-size: 15px;
     background-color: transparent;
-    list-style-type: none;
-
 }
 
 

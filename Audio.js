@@ -36,21 +36,23 @@ analyser.fftSize = FFT_SIZE;
 /********************
      ADD PLANE
  ********************/
-var planegeo= new THREE.PlaneGeometry(30, 30, 127, 29);
-planegeo.verticesNeedUpdate = true;
-var planemat = new THREE.MeshBasicMaterial({
-    color: 0xFFFF00,
-   wireframe: true
- });
 
-var plane = new THREE.Mesh(planegeo, planemat);
+    var planegeo= new THREE.PlaneGeometry(30, 30, 127, 29);
+    planegeo.verticesNeedUpdate = true;
+    var planemat = new THREE.MeshBasicMaterial({
+        color: 0xFFFF00,
+        wireframe: true
+    });
 
-plane.rotation.x=-1;
-plane.rotation.x=(-3.14/4);
-plane.position.y=3;
-plane.position.x=2;
+    var plane = new THREE.Mesh(planegeo, planemat);
 
-scene.add(plane);
+    plane.rotation.x=-1;
+    plane.rotation.x=(-3.14/4);
+    plane.position.y=3;
+    plane.position.x=2;
+
+    scene.add(plane);
+
 
 
 /********************
@@ -63,7 +65,7 @@ controls.dampingFactor = 0.9;
 controls.enableZoom = true;
 
 //ska vara true men fuckar upp efter att ha tryckt på knapparna
-controls.enableRotate = false;
+controls.enableRotate = true;
 
 //max och mindistance för zoomning
 controls.minDistance = 20;
@@ -114,6 +116,7 @@ function play() {
                 plane.geometry.vertices[(j*128)-i-1].z = plane.geometry.vertices[((j-1)*128)-i-1].z;
             }
 
+            //behövs denna?
             plane.geometry.verticesNeedUpdate = true;
 
             renderer.render( scene, camera );
@@ -129,26 +132,24 @@ function chooseSong(text) {
     song = text;
     audio.src = song;
     play();
-
 }
 
 
 /* when pressing controlbuttons */
 function graphControls(posz,rotz,rotx,roty) {
 
-    plane.rotation.x=-1;
-    plane.rotation.x=(-3.14/4);
-    plane.position.y=3;
-    plane.position.x=2;
-
+    camera.position.z=25;
+    camera.position.x=0;
+    camera.position.y=0;
+    camera.rotation.x=-6;
+    camera.rotation.y=0;
+    camera.rotation.z=0;
 
     plane.position.z = posz;
     plane.rotation.z=rotz;
     plane.rotation.x=rotx;
     plane.position.x=2;
     plane.rotation.y=roty;
-
-
 }
 
 function show_timeText() {

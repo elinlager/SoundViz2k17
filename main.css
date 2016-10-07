@@ -96,11 +96,16 @@ body {
 
 #buttonTime
 {
-   top: 170px;
+   top: 190px;
 
 }
 
 #buttonFreq
 {
-    top: 200px;
+    top: 220px;
 }
+
+/*
+#gitimg{
+    top:60px;
+}*/

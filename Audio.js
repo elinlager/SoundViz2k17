@@ -132,11 +132,13 @@ play();
 function chooseSong(text, number) {
     song = text;
     audio.src = song;
+
     for(i = 1; i<5; i++) {
+        var songnumber = i.toString();
         if (i != number)
-            document.getElementById(i).style.color = "white";
+            document.getElementById(songnumber).style.color = "white";
         else
-            document.getElementById(i).style.color = "yellow";
+            document.getElementById(songnumber).style.color = "yellow";
     }
 
     play();

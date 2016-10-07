@@ -148,7 +148,7 @@ function chooseSong(text, number) {
 
 /* when pressing controlbuttons */
 function graphControls(posz,rotz,rotx,roty,camy) {
-
+    plane.enableRotate=true;
     camera.position.z=25;
     camera.position.x=0;
     camera.position.y=camy;

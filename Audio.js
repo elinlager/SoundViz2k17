@@ -133,13 +133,14 @@ function chooseSong(text, number) {
     song = text;
     audio.src = song;
 
-    for(i = 1; i<5; i++) {
-        var songnumber = i.toString();
-        if (i != number)
-            document.getElementById(songnumber).style.color = "white";
-        else
-            document.getElementById(songnumber).style.color = "yellow";
-    }
+    document.getElementById("Song1").style.color = "white";
+    document.getElementById("Song2").style.color = "white";
+    document.getElementById("Song3").style.color = "white";
+    document.getElementById("Song4").style.color = "white";
+    document.getElementById("Song5").style.color = "white";
+    document.getElementById("Song6").style.color = "white";
+    document.getElementById(number).style.color = "yellow";
+
 
     play();
 }

@@ -147,11 +147,11 @@ function chooseSong(text, number) {
 
 
 /* when pressing controlbuttons */
-function graphControls(posz,rotz,rotx,roty) {
+function graphControls(posz,rotz,rotx,roty,camy) {
 
     camera.position.z=25;
     camera.position.x=0;
-    camera.position.y=0;
+    camera.position.y=camy;
     camera.rotation.x=-6;
     camera.rotation.y=0;
     camera.rotation.z=0;

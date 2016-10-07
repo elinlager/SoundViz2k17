@@ -35,13 +35,13 @@ audio::-webkit-media-controls-volume-slider {
 
 h1{
     color: white;
-    font-family:helvetica;
+    font-family:'Inconsolata', monospace;
     text-transform: uppercase;
     margin-left: 70px;
 }
 
 p {
-    font-family:helvetica;
+    font-family:'Inconsolata', monospace;
     color: white;
     font-size: 20px;
 }

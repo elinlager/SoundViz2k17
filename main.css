@@ -9,7 +9,6 @@
     margin-left: 900px;
     top: 10px;
     list-style-type: none;
-
 }
 
 .songButton {
@@ -76,7 +75,7 @@ body {
     background-color: transparent;
     color: white;
     outline: 0;
-    font-family: "Consolas";
+    font-family: 'Inconsolata', monospace;
 }
 
 .button:hover{
@@ -85,7 +84,7 @@ body {
 
 .buttonText{
     top:250px;
-    font-family: Consolas;
+    font-family: 'Inconsolata', monospace;
     font-size: 12px;
     margin-left: 20px;
 }

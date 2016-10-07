@@ -129,10 +129,16 @@ function play() {
 
 play();
 
-function chooseSong(text) {
+function chooseSong(text, number) {
     song = text;
     audio.src = song;
-    document.getElementById("Song1").style.color = "yellow";
+    for(i = 1; i<5; i++) {
+        if (i != number)
+            document.getElementById(i).style.color = "white";
+        else
+            document.getElementById(i).style.color = "yellow";
+    }
+
     play();
 }
 

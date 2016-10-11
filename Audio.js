@@ -51,6 +51,7 @@ var planemat = new THREE.MeshBasicMaterial({
     plane.rotation.x=(-3.14/4);
     plane.position.y=3;
     plane.position.x=2;
+    plane.position.z=-1;
 
     scene.add(plane);
 
@@ -162,6 +163,7 @@ function graphControls(posz,rotz,rotx,roty,camy) {
     plane.rotation.x=rotx;
     plane.position.x=2;
     plane.rotation.y=roty;
+
 }
 
 

@@ -7,7 +7,7 @@
 
 #playlist {
     position: absolute;
-    margin-left: 900px;
+    left: 900px;
     top: 10px;
     list-style-type: none;
 }

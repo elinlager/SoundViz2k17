@@ -41,7 +41,8 @@ var planegeo= new THREE.PlaneGeometry(30, 30, 127, 29);
 planegeo.verticesNeedUpdate = true;
 var planemat = new THREE.MeshBasicMaterial({
     color: 0xFFFF00,
-    wireframe: true
+    wireframe: true,
+    vertexColors: THREE.FaceColors
 });
 
     var plane = new THREE.Mesh(planegeo, planemat);
@@ -148,7 +149,7 @@ function chooseSong(text, number) {
 
 /* when pressing controlbuttons */
 function graphControls(posz,rotz,rotx,roty,camy) {
-
+    plane.enableRotate=true;
     camera.position.z=25;
     camera.position.x=0;
     camera.position.y=camy;

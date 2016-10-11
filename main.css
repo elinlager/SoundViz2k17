@@ -2,13 +2,12 @@
     position: absolute;
     z-index: 1;
     width: 100%;
-
 }
 
 #playlist {
     position: absolute;
-    left: 900px;
-    top: 10px;
+    right: 2%;
+    top: 3%;
     list-style-type: none;
 }
 
@@ -23,7 +22,6 @@
 
 .songButton:hover{
     color: yellow;
-    padding-left: 0px;
 }
 
 audio::-webkit-media-controls-panel {
